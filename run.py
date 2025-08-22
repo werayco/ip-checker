@@ -39,11 +39,12 @@ if ipAdd:
     st.subheader("Using AllCheckers")
     try:
         results = allCheckers.BlacklistChecker.quick_check(ipAdd)  # run tier1 blacklists
-        summary = allCheckers.BlacklistChecker.get_summary(ipAdd, results)  # get full summary
+        results = allCheckers.BlacklistChecker.comprehensive_check(ipAdd)
         
         st.write("Blacklist Summary:")
         st.json(summary)   # pretty print JSON-style
     except Exception as e:
         st.error(f"Error checking IP with AllCheckers: {e}")
+
 
 
