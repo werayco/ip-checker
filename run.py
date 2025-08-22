@@ -1,3 +1,4 @@
+## run.py
 import streamlit as st
 import requests
 from ipCheck import abuseIP, allCheckers, sansIP
@@ -39,12 +40,9 @@ if ipAdd:
     st.subheader("Using AllCheckers")
     try:
         results = allCheckers.BlacklistChecker.quick_check(ipAdd)  # run tier1 blacklists
-        results = allCheckers.BlacklistChecker.comprehensive_check(ipAdd)
+        summary = allCheckers.BlacklistChecker.get_summary(ipAdd, results)  # get full summary
         
         st.write("Blacklist Summary:")
         st.json(summary)   # pretty print JSON-style
     except Exception as e:
         st.error(f"Error checking IP with AllCheckers: {e}")
-
-
-
