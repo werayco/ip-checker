@@ -2,7 +2,6 @@ import socket
 import concurrent.futures
 from typing import List, Dict, Tuple
 import ipaddress
-import time
 
 class BlacklistChecker:
     tier1_blacklists = {
@@ -153,4 +152,4 @@ class BlacklistChecker:
             if BlacklistChecker.is_blacklisted(ip):
                 blacklisted_ips.append(ip)
         return blacklisted_ips
-    
+
